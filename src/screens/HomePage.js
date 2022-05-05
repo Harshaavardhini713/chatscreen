@@ -1,34 +1,25 @@
-import React, {useEffect, setState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  Button,
-  SafeAreaView,
-  Header,
-  state,
-  Icon,
-} from 'react-native';
-import {Appbar, Menu, Divider, Provider, Searchbar} from 'react-native-paper';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import NewMessageButton from './FloatingButton';
-
-import UpperMenu from './components/HomeUpper';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, Text, SafeAreaView} from 'react-native';
+import {Appbar, Menu, Provider} from 'react-native-paper';
+// import {Appbar, Menu, Divider, Provider, Searchbar} from 'react-native-paper';
+// import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import NewMessageButton from '../components/FloatingButton';
+import UpperMenu from '../components/HomeUpper';
 
 export default function HomePage(props) {
   const {navigation} = props;
 
-  const _goBack = () => console.log('Went back');
+  // const _goBack = () => console.log('Went back');
 
-  const _handleSearch = () => console.log('Searching');
+  const _handleSearch = () => {
+    navigation.navigate('Search');
+  };
 
   const _handleMore = () => console.log('Shown more');
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
-  const [searchQuery, setSearchQuery] = React.useState('');
-
+  const [searchQuery, setSearchQuery] = useState('');
   //    const _showSearchBar =() => {
   //     React.setState({searchBarExist: true});
   //     SearchBar.show();
@@ -38,25 +29,22 @@ export default function HomePage(props) {
   //     setState({searchBarExist: false});
   //     SearchBar.hide();
   //   }
-  const MyComponent = () => {
-    // console.log("hcjs")
-    const onChangeSearch = query => setSearchQuery(query);
+  const onChangeSearch = query => setSearchQuery(query);
 
-    return (
-      <Searchbar
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-      />
-    );
-  };
+  // const MyComponent = () => {
+  //   <Searchbar
+  //     placeholder="Search"
+  //     onChangeText={onChangeSearch}
+  //     value={searchQuery}
+  //   />;
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
       <Provider>
         <Appbar.Header dark={true} style={{backgroundColor: '#B983FF'}}>
           <Appbar.Content title={<Text style={styles.text}>ChatterBox</Text>} />
-          <Appbar.Action icon="magnify" onPress={() => MyComponent()} />
+          <Appbar.Action icon="magnify" onPress={_handleSearch} />
 
           <Menu
             visible={visible}
@@ -82,7 +70,8 @@ export default function HomePage(props) {
             />
             <Menu.Item
               onPress={() => {
-                console.log('Settings Option');
+                console.log('Profile Option');
+                navigation.navigate('Profile');
               }}
               title="Profile"
             />

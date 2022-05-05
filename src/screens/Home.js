@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {View, StyleSheet, Text, Image, Button} from 'react-native';
-import CustomButton from './Utils/CustomButton';
-import GlobalStyle from './Utils/GlobalStyle';
+import CustomButton from '../Utils/CustomButton';
+import GlobalStyle from '../Utils/GlobalStyle';
 
 export default function Splash(props) {
   const {navigation} = props;

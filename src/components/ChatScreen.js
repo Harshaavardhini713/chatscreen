@@ -21,9 +21,9 @@ import {
   Body,
   Badge,
 } from 'native-base';
-import ChatListItem from '../components/ChatRoomItem/ChatRoomItem';
+import ChatListItem from './ChatListItem/ChatListItem';
 
-import chatRooms from './chatRoom';
+import chatRooms from '../data/chatRoom';
 
 export default function ChatScreen() {
   return (

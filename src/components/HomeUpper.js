@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import ChatScreen from '../data/ChatScreen';
+import ChatScreen from '../components/ChatScreen';
 
 // function ChatScreen1() {
 //   return (
