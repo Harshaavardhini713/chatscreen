@@ -2,7 +2,10 @@ import * as React from 'react';
 import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import ChatScreen from '../components/ChatScreen';
+import ChatScreen from '../screens/ChatScreen';
+import chatRoom from '../data/chatRoom';
+// import {useSelector} from 'react-redux';
+// import {counterValue} from '../redux/reducer/counterReducer';
 
 // function ChatScreen1() {
 //   return (
@@ -24,6 +27,10 @@ function StatusScreen() {
 const Tab = createMaterialTopTabNavigator();
 
 export default function UpperMenu() {
+  let value = 0;
+  for (const i in chatRoom) {
+    if (chatRoom[i].lastMessage.seen === false) value++;
+  }
   return (
     <Tab.Navigator
       screenOptions={{
@@ -70,7 +77,7 @@ export default function UpperMenu() {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  3
+                  {value}
                 </Text>
               </View>
             );

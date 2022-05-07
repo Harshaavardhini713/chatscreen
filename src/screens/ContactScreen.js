@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, View, Text, StyleSheet} from 'react-native';
 import Contacts from 'react-native-contacts';
-import Contact from '../components/ContactListItem';
+import Contact from '../components/ChatListItem/ContactListItem';
 
 const ContactsScreen = () => {
   const [contacts, setContacts] = useState([]);

@@ -7,21 +7,8 @@ import {
   View,
   FlatList,
 } from 'react-native';
-import {
-  Container,
-  Button,
-  Left,
-  Right,
-  Icon,
-  Text,
-  Content,
-  NativeBaseProvider,
-  ListItem,
-  Thumbnail,
-  Body,
-  Badge,
-} from 'native-base';
-import ChatListItem from './ChatListItem/ChatListItem';
+
+import ChatListItem from '../components/ChatListItem/ChatListItem';
 
 import chatRooms from '../data/chatRoom';
 

@@ -8,7 +8,7 @@ import {
   FlatList,
   TextInput,
 } from 'react-native';
-import ChatListItem from '../components/ChatListItem/ChatListItem';
+import SearchListItem from '../components/ChatListItem/SearchListItem';
 import chatRoom from '../data/chatRoom';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -76,7 +76,7 @@ const Search = props => {
         data={filteredDataSource}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={ItemSeparatorView}
-        renderItem={({item}) => <ChatListItem chatRoom={item} />}
+        renderItem={({item}) => <SearchListItem chatRoom={item} />}
       />
     </View>
   );
