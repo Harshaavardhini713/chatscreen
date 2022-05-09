@@ -2,28 +2,40 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, View, Text, StyleSheet} from 'react-native';
 import Contacts from 'react-native-contacts';
 import Contact from '../components/ChatListItem/ContactListItem';
+import {getContact} from '../api/axios';
 
 const ContactsScreen = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(null);
+  const fetchData = () => {
+    getContact()
+      .then(response => setContacts(response))
+      .catch(err => console.log('A -', err));
+  };
+
   useEffect(() => {
-    Contacts.getAll()
-      .then(contacts => {
-        contacts.sort(
-          (a, b) => a.givenName.toLowerCase() > b.givenName.toLowerCase(),
-        );
-        setContacts(contacts);
-      })
-      .catch(e => {
-        alert('Permission to access contacts was denied');
-        console.warn('Permission to access contacts was denied');
-      });
+    fetchData();
   }, []);
+  // useEffect(() => {
+  //   Contacts.getAll()
+  //     .then(contacts => {
+  //       contacts.sort(
+  //         (a, b) => a.givenName.toLowerCase() > b.givenName.toLowerCase(),
+  //       );
+  //       setContacts(contacts);
+  //     })
+  //     .catch(e => {
+  //       alert('Permission to access contacts was denied');
+  //       console.warn('Permission to access contacts was denied');
+  //     });
+  // }, []);
+
   const keyExtractor = (item, idx) => {
     return item?.recordID?.toString() || idx.toString();
   };
   const renderItem = ({item, index}) => {
     return <Contact contact={item} />;
   };
+
   return (
     <FlatList
       data={contacts}
